@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>profile</title>
+  </head>
+  <body>
+    <div class="content">
+      <header>
+        <div class="socialMedia">
+          <h3>KatyaNichi</h3>
+          <ul class="icons">
+            <li>
+              <a href="https://github.com/KatyaNichi"
+                ><img src="./icons/icons8-github.svg" alt="Github icon"
+              /></a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/ekaterina-nichiporenko-0b3223207/"
+                ><img src="./icons/icons8-linkedin.svg" alt="linkedin icon"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/nichiporenko.katerina">
+                <img src="./icons/icons8-facebook.svg" alt="Facebook icon"
+              /></a>
+            </li>
+            <li>
+              <a href="https://t.me/nichikatya"
+                ><img src="./icons/icons8-telegram-app.svg" alt="Telegram icon"
+              /></a>
+            </li>
+          </ul>
+        </div>
+        <div class="frontPage">
+          <img
+            src="./images/profile-photo.jpg"
+            alt="profile photo"
+            id="profilePhoto"
+          />
+          <div class="description">
+            <h1 class="greetings">Nice to meet you!</h1>
+            <h2 id="myName">I'm <span id="fetchedName"></span></h2>
+            <p class="aboutMe">
+              I am a full stack web developer. As a musician in a symphony
+              orchestra I have had a lot of opportunities to develop my soft
+              skills such as communications, self-discipline, adaptability,
+              responsibility and teamwork. And I believe these would serve me
+              and my employer well in future.
+            </p>
+            <a id="contactMe" href="#contact">CONTACT ME</a>
+          </div>
+        </div>
+      </header>
+      <ul class="skills">
+        <li>
+          <h3>HTML5</h3>
+          <p class="subHeader">3 Years Experience</p>
+        </li>
+        <li>
+          <h3>CSS3</h3>
+          <p class="subHeader">3 Years Experience</p>
+        </li>
+        <li>
+          <h3>JavaScript</h3>
+          <p class="subHeader">2 Years Experience</p>
+        </li>
+        <li>
+          <h3>Accessibility</h3>
+          <p class="subHeader">1 Year Experience</p>
+        </li>
+        <li>
+          <h3>BEM</h3>
+          <p class="subHeader">3 Years Experience</p>
+        </li>
+        <li>
+          <h3>GIT</h3>
+          <p class="subHeader">3 Years Experience</p>
+        </li>
+      </ul>
+
+      <section class="projects">
+        <h2>Projects</h2>
+        <ul class="listOfProjects">
+          <li>
+            <img
+              src="./project-screenshot/travel.jpg"
+              alt="Project Russian Travel screenshot"
+            />
+            <h3 class="projectHeader">Russian travel</h3>
+            <p class="projectSkills">HTML CSS BEM</p>
+            <a href="https://github.com/KatyaNichi/russian-travel">VIEW CODE</a>
+          </li>
+          <li>
+            <img
+              src="./project-screenshot/mesto.jpg"
+              alt="Project Mesto screenshot"
+            />
+            <h3 class="projectHeader">Mesto</h3>
+            <p class="projectSkills">HTML CSS BEM JavaScript</p>
+            <a href="https://github.com/KatyaNichi/mesto">VIEW CODE</a>
+          </li>
+          <li>
+            <img
+              src="./project-screenshot/cv.jpg"
+              alt="Project CV screenshot"
+            />
+            <h3 class="projectHeader">CV</h3>
+            <p class="projectSkills">HTML CSS</p>
+            <a
+              href="https://github.com/KatyaNichi/FooCoding/tree/main/HTML-CSS/week01"
+              >VIEW CODE</a
+            >
+          </li>
+          <li>
+            <img
+              src="./project-screenshot/learn.jpg"
+              alt="Project How to learn screenshot"
+            />
+            <h3 class="projectHeader">How to learn</h3>
+            <p class="projectSkills">HTML CSS BEM</p>
+            <a href="https://github.com/KatyaNichi/how-to-learn">VIEW CODE</a>
+          </li>
+        </ul>
+      </section>
+
+      <footer>
+        <section class="contact" id="contact">
+          <div class="contact-text">
+            <h2>Contact</h2>
+            <p>
+              I would love to hear about your project and how I could help.
+              Please fill in the form, and I'll get back to you as soon as
+              possible.
+            </p>
+          </div>
+          <form id="contactForm" name="contactform" method="post">
+            <div class="input-wrapper">
+              <div class="label-wrapper">
+                <label for="name">Name</label
+                ><input type="text" id="name" name="name" required />
+              </div>
+              <p id="nameError" class="error"></p>
+            </div>
+            <div class="input-wrapper">
+              <div class="label-wrapper">
+                <label for="email">Email</label
+                ><input type="email" id="email" name="email" required />
+              </div>
+              <p id="emailError" class="error"></p>
+            </div>
+            <div class="input-wrapper">
+              <div class="label-wrapper">
+                <label for="message">Message</label
+                ><textarea
+                  id="textarea"
+                  name="message"
+                  name="message"
+                  required
+                ></textarea>
+              </div>
+              <p id="messageError" class="error"></p>
+            </div>
+            <button id="submitContactForm" class="btn" type="submit">
+              Send message
+            </button>
+          </form>
+        </section>
+        <div class="socialMedia">
+          <h3>KatyaNichi</h3>
+          <ul class="icons">
+            <li>
+              <a href="https://github.com/KatyaNichi"
+                ><img src="./icons/icons8-github.svg" alt="Github icon"
+              /></a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/ekaterina-nichiporenko-0b3223207/"
+                ><img src="./icons/icons8-linkedin.svg" alt="linkedin icon"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/nichiporenko.katerina">
+                <img src="./icons/icons8-facebook.svg" alt="Facebook icon"
+              /></a>
+            </li>
+            <li>
+              <a href="https://t.me/nichikatya"
+                ><img src="./icons/icons8-telegram-app.svg" alt="Telegram icon"
+              /></a>
+            </li>
+          </ul>
+        </div>
+
+        <form id="adminLogInForm" name="loginform">
+          <div class="input-wrapper">
+            <div class="label-wrapper">
+              <label for="mail">Email: </label
+              ><input type="email" id="mail" name="mail" required />
+            </div>
+            <p id="mailError" class="error"></p>
+          </div>
+          <div class="input-wrapper">
+            <div class="label-wrapper">
+              <label for="password">Password: </label
+              ><input type="password" id="password" name="password" required />
+            </div>
+            <p id="passwordError" class="error"></p>
+          </div>
+          <button id="submitLogIn" class="btn">Log in</button>
+        </form>
+        <div id="adminPage">
+          <h3 class="adminWelcome">Welcome to Admin page!</h3>
+        </div>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
