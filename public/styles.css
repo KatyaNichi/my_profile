@@ -1,0 +1,556 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+}
+a,
+li {
+  border-bottom: 2px solid transparent;
+}
+.error {
+  color: palevioletred;
+}
+h2 {
+  font-size: 5rem;
+}
+.projects a:hover {
+  border-bottom: 2px solid palevioletred;
+}
+#contactMe {
+  border-bottom: 2px solid palevioletred;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.socialMedia:nth-child(2) {
+  margin-bottom: 2rem;
+}
+.socialMedia li:hover {
+  border-bottom: 2px solid palevioletred;
+}
+body {
+  font-family: "Libre Baskerville", serif;
+  color: #333333;
+  background-color: #f5f5f5;
+}
+.hamb {
+  display: none;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background-color: #ffe4e1;
+  position: fixed;
+  top: 0;
+  width: 85%;
+  padding: 1rem;
+  opacity: 0.95;
+}
+.popup {
+  display: none;
+}
+.nav-list {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.nav-items:hover {
+  color: palevioletred;
+}
+.content {
+  width: 85%;
+  margin: 0 auto;
+}
+.socialMedia,
+.icons,
+.frontPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icons {
+  width: 15%;
+}
+#profilePhoto {
+  width: 25%;
+}
+.greetings {
+  font-size: 5rem;
+}
+#myName {
+  font-size: 4rem;
+}
+.description {
+  width: 60%;
+}
+.frontPage {
+  margin-top: 8%;
+  align-items: center;
+  border-bottom: 1px solid #000;
+  padding-bottom: 6%;
+}
+.aboutMe {
+  font-size: 1.2rem;
+  margin: 3rem 0;
+}
+#ekaterina {
+  border-bottom: 4px solid palevioletred;
+}
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: start;
+  grid-gap: 35% 0;
+  margin-top: 6%;
+  border-bottom: 1px solid #000;
+  padding-bottom: 9%;
+}
+.skills h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.listOfProjects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 4rem 1rem;
+  /* align-items: center; */
+}
+/* .projects { */
+section {
+  margin: 4rem 0;
+}
+.projects h2 {
+  margin-bottom: 2.5rem;
+}
+.projects h3 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+.projects p {
+  margin: 0.7rem 0;
+}
+
+.contact {
+  padding: 3rem 0;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffe4e1;
+  margin-bottom: 3rem;
+}
+.contact h2 {
+  margin-bottom: 2rem;
+}
+.projectLink {
+  color: palevioletred;
+}
+
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  line-height: 2rem;
+  max-width: 50%;
+}
+input,
+textarea {
+  margin: 1rem 0 1rem 3.5rem;
+  color: white;
+  background-color: #ffe4e1;
+  border: 0;
+}
+textarea {
+  margin-left: 2rem;
+}
+.btn {
+  border-bottom: 0.2rem solid palevioletred;
+  padding-bottom: 0.3rem;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  color: gray;
+  background-color: #ffe4e1;
+  margin-left: auto;
+  transition: background-color 1s linear;
+}
+#submitContactForm {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+
+  background-color: #ffe4e1;
+}
+.btn:hover {
+  background: palevioletred;
+  border-radius: 1rem;
+  color: white;
+}
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.label-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+.contact-text {
+  max-width: 30%;
+  text-align: center;
+}
+.contact-text p {
+  color: gray;
+}
+.input-wrapper {
+  border-bottom: 0.1rem solid gray;
+}
+.adminLogIn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 0.1rem solid white;
+}
+#adminLogInForm {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1rem 3rem;
+  background-color: #ffe4e1;
+}
+#adminLogInForm .input-wrapper {
+  border-bottom: 0;
+}
+#adminLogInForm input {
+  margin: 0 3rem 0 1rem;
+}
+#submitLogIn {
+  padding: 0.3rem 0.5rem;
+  margin-left: auto;
+}
+#adminPage {
+  display: none;
+  text-align: center;
+}
+#mailError {
+  margin-top: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .content,
+  nav {
+    font-size: 1.5rem;
+  }
+  nav {
+    width: 95%;
+  }
+  .content {
+    width: 95%;
+  }
+  .nav-list {
+    width: 100%;
+  }
+  .icons {
+    width: 45%;
+  }
+  header .icons {
+    display: none;
+  }
+  .description h1,
+  #myName {
+    font-size: 2.5rem;
+  }
+  .projects h3 {
+    font-size: 3rem;
+  }
+  .projects p {
+    font-size: 2rem;
+  }
+  .projectLink {
+    font-size: 2rem;
+  }
+  #profilePhoto {
+    width: 30%;
+  }
+  .frontPage {
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 5rem;
+  }
+  .aboutMe {
+    font-size: 1.4rem;
+    margin: 2rem 0;
+  }
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5%;
+  }
+  .skills p {
+    font-size: 2rem;
+  }
+  .contact {
+    padding: 2rem 0;
+    font-size: 2rem;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  .contact-text {
+    max-width: 70%;
+  }
+  .contact-text p {
+    font-size: 2rem;
+  }
+  .contact h2 {
+    font-size: 5rem;
+  }
+  #contactForm {
+    min-width: 70%;
+  }
+  input,
+  textarea {
+    margin: 1rem 0 1rem 3.5rem;
+  }
+
+  #submitContactForm {
+    font-size: 2rem;
+    padding-bottom: 0.2rem;
+  }
+  #adminLogInForm {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+  #adminLogInForm .input-wrapper {
+    max-width: 40%;
+  }
+
+  #adminLogInForm input {
+    min-width: 0;
+    margin: 0 1rem;
+  }
+  #submitLogIn {
+    padding: 0;
+    margin: 0;
+  }
+  .label-wrapper input {
+    width: 100%;
+  }
+  .socialMedia {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 640px) {
+  .socialMedia {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .hamb {
+    display: flex;
+    align-items: center;
+  }
+  .hamb__field {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .bar {
+    display: block;
+    width: 2rem;
+    height: 5px;
+    margin: 6px auto;
+    background-color: gray;
+    transition: 0.2s;
+  }
+  .popup {
+    position: fixed;
+    top: 75px;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 100;
+    display: flex;
+    transition: 0.3s;
+  }
+
+  .popup.open {
+    left: 0;
+  }
+  .popup .nav-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 3rem 0;
+    overflow: auto;
+  }
+  .popup .nav-list > li {
+    width: 100%;
+  }
+
+  .popup .nav-list > li > a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #3f3f3f;
+  }
+
+  .popup .menu > li > a:hover {
+    background-color: rgba(122, 82, 179, 0.1);
+  }
+
+  .hamb__field.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamb__field.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamb__field.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  body.noscroll {
+    overflow: hidden;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .icons {
+    width: 40%;
+    margin-top: 1.5rem;
+  }
+  .frontPage {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+  }
+  #profilePhoto {
+    width: 50%;
+    margin-bottom: 2rem;
+  }
+  .description {
+    width: 70%;
+  }
+  .description h1,
+  #myName {
+    font-size: 3rem;
+  }
+  .aboutMe {
+    font-size: 2.5rem;
+  }
+  #contactMe {
+    font-size: 3rem;
+  }
+  .skills {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    grid-gap: 2% 0;
+    padding-bottom: 5rem;
+  }
+  .skills li {
+    margin-bottom: 1rem;
+  }
+  .skills h3 {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+  }
+  #skills h2 {
+    text-align: center;
+  }
+  .projects {
+    text-align: center;
+  }
+  .projects h2 {
+    font-size: 4rem;
+  }
+  .projectLink {
+    font-size: 3rem;
+  }
+  .listOfProjects {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-gap: 2rem 1rem;
+  }
+  .listOfProjects li {
+    font-size: 1rem;
+  }
+  .projects h3 {
+    font-size: 2.5rem;
+    margin-top: 1.2rem;
+  }
+  .contact-text,
+  #contactForm {
+    max-width: 80%;
+  }
+  input,
+  textarea {
+    margin: 1rem 0 1rem 2rem;
+    color: #000;
+  }
+  #submitContactForm {
+    font-size: 4rem;
+    margin-top: 4rem;
+  }
+  #adminLogInForm {
+    flex-direction: column;
+    justify-content: center;
+  }
+  #adminLogInForm input {
+    margin: 1rem 0 0 1rem;
+  }
+  #submitLogIn {
+    padding: 0 0 0.2rem 0;
+    margin: 1rem 0 0 0;
+  }
+  #adminLogInForm .input-wrapper:first-of-type {
+    padding-left: 1.3rem;
+  }
+  #adminLogInForm.label-wrapper {
+    margin-bottom: 1rem;
+  }
+}
