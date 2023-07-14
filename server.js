@@ -32,7 +32,6 @@ app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/admin.html")); // Отправка файла admin.html
 });
 
-// Запуск сервера
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
