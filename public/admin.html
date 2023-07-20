@@ -3,9 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Admin Page</title>
   </head>
   <body>
-    <h2>Кукусики!</h2>
+    <h1>Admin Page</h1>
+    <h2>Received messages</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Delete message</th>
+        </tr>
+      </thead>
+      <tbody id="messagesTableBody"></tbody>
+    </table>
+    <div id="statusMessage"></div>
+
+    <script src="/admin.js"></script>
   </body>
 </html>

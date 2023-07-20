@@ -13,7 +13,15 @@ const contactForm = document.getElementById("contactForm");
 const mailError = document.getElementById("mailError");
 const hamb = document.querySelector("#hamb");
 const popup = document.querySelector("#popup");
+const answer = document.getElementById("answer");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("textarea");
 const body = document.body;
+
+function hideAnswer() {
+  answer.style.display = "none";
+}
 
 const fetchLinkedInData = async () => {
   const response = await fetch(finalUrl, {
@@ -34,33 +42,37 @@ const fetchLinkedInData = async () => {
 };
 fetchLinkedInData();
 
-function validateform(event) {
+async function validateContactForm(event) {
   event.preventDefault();
-  const validRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   const name = document.contactform.name.value;
   const email = document.contactform.email.value;
   const message = document.contactform.message.value;
-  if (name == null || name == "") {
-    errorName.textContent = "Please enter your name here to continue";
-  } else {
-    errorName.textContent = "";
-    if (email == null || email == "") {
-      errorEmail.textContent = "Please enter your email here to continue";
-    } else if (!email.match(validRegex)) {
-      errorEmail.textContent = "Please enter a valid email";
-    } else {
-      errorEmail.textContent = "";
-      if (message == null || message == "") {
-        messageError.textContent = "Please write your message here";
-      } else {
-        messageError.textContent = "";
-        contactForm.reset();
-      }
-    }
-  }
 
-  // var password=document.myform.password.value;
+  try {
+    const response = await fetch("/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    if (response.ok) {
+      document.contactform.reset();
+      // show message
+      answer.textContent = "Thank you for your message!";
+      answer.style.display = "block";
+    } else {
+      const errorData = await response.json();
+      console.error("Failed to save data:", errorData.error);
+      answer.textContent = errorData.error;
+      answer.style.display = "block";
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    answer.textContent = error;
+    answer.style.display = "block";
+  }
 }
 
 function validateLogIn(event) {
@@ -68,7 +80,7 @@ function validateLogIn(event) {
   const mail = document.loginform.mail.value;
   const password = document.loginform.password.value;
 
-  fetch("/", {
+  fetch("/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -76,15 +88,14 @@ function validateLogIn(event) {
     body: JSON.stringify({ mail, password }),
   })
     .then((response) => {
-      if (response.redirected) {
-        window.location.href = response.url;
+      if (response.status === 200) {
+        document.loginform.reset();
+        window.location.href = "/admin";
       } else {
-        // Некорректные данные, отобразить сообщение об ошибке
         mailError.textContent = "Invalid email or password";
       }
     })
     .catch((error) => {
-      // Обработка ошибки
       console.error("Error:", error);
     });
 }
@@ -116,6 +127,23 @@ function closeOnClick() {
   body.classList.remove("noscroll");
 }
 
-submitContactBtn.addEventListener("click", validateform);
+//////////////////////////////////////////////////// Smooth scroll to target element and offset for fixed menu
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop - 70,
+        behavior: "smooth",
+      });
+    }
+  });
+});
+
+submitContactBtn.addEventListener("click", validateContactForm);
 loginForm.addEventListener("submit", validateLogIn);
 hamb.addEventListener("click", hambHandler);
+nameInput.addEventListener("input", hideAnswer);
+emailInput.addEventListener("input", hideAnswer);
+messageInput.addEventListener("input", hideAnswer);

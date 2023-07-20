@@ -29,6 +29,7 @@
             <li><a href="#skills" class="nav-items">Skills</a></li>
             <li><a href="#projects" class="nav-items">Projects</a></li>
             <li><a href="#contact" class="nav-items">Contact</a></li>
+            <li><a href="#adminLogInForm" class="nav-items">Log in</a></li>
           </ul>
           <ul class="icons">
             <li>
@@ -55,13 +56,13 @@
           </ul>
         </nav>
         <div class="popup" id="popup"></div>
-        <div class="frontPage">
+        <div class="frontPage" id="home">
           <img
             src="./images/profile-photo.jpg"
             alt="profile photo"
             id="profilePhoto"
           />
-          <div class="description" id="home">
+          <div class="description">
             <h1 class="greetings">Nice to meet you!</h1>
             <h2 id="myName">
               I'm <span id="ekaterina">Ekaterina Nichiporenko</span>
@@ -175,31 +176,21 @@
           </div>
           <form id="contactForm" name="contactform" method="post">
             <div class="input-wrapper">
-              <div class="label-wrapper">
-                <label for="name">Name</label
-                ><input type="text" id="name" name="name" required />
-              </div>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
               <p id="nameError" class="error"></p>
             </div>
             <div class="input-wrapper">
-              <div class="label-wrapper">
-                <label for="email">Email</label
-                ><input type="email" id="email" name="email" required />
-              </div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
               <p id="emailError" class="error"></p>
             </div>
             <div class="input-wrapper">
-              <div class="label-wrapper">
-                <label for="message">Message</label
-                ><textarea
-                  id="textarea"
-                  name="message"
-                  name="message"
-                  required
-                ></textarea>
-              </div>
+              <label for="message">Message</label>
+              <textarea id="textarea" name="message" required></textarea>
               <p id="messageError" class="error"></p>
             </div>
+            <span id="answer" class="error">"Thank you for your message!"</span>
             <button id="submitContactForm" class="btn" type="submit">
               Send message
             </button>
@@ -231,19 +222,20 @@
             </li>
           </ul>
         </div>
-        <form id="adminLogInForm" name="loginform" method="POST" action="/">
+        <form
+          id="adminLogInForm"
+          name="loginform"
+          method="POST"
+          action="/login"
+        >
           <div class="input-wrapper">
-            <div class="label-wrapper">
-              <label for="mail">Email: </label
-              ><input type="text" id="mail" name="mail" required />
-            </div>
+            <label for="mail">Email:</label>
+            <input type="text" id="mail" name="mail" required />
             <p id="mailError" class="error"></p>
           </div>
           <div class="input-wrapper">
-            <div class="label-wrapper">
-              <label for="password">Password: </label
-              ><input type="password" id="password" name="password" required />
-            </div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
             <p id="passwordError" class="error"></p>
           </div>
           <button id="submitLogIn" class="btn">Log in</button>

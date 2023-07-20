@@ -23,11 +23,17 @@ select {
 }
 a {
   text-decoration: none;
-  color: #333333;
+  color: #605b56;
 }
 a,
 li {
   border-bottom: 2px solid transparent;
+}
+
+#answer {
+  padding: 1rem;
+  font-size: 2rem;
+  display: none;
 }
 .error {
   color: palevioletred;
@@ -36,10 +42,10 @@ h2 {
   font-size: 5rem;
 }
 .projects a:hover {
-  border-bottom: 2px solid palevioletred;
+  border-bottom: 2px solid #51a3a3;
 }
 #contactMe {
-  border-bottom: 2px solid palevioletred;
+  border-bottom: 2px solid #51a3a3;
   padding-bottom: 0.5rem;
   font-weight: 600;
 }
@@ -48,11 +54,11 @@ h2 {
   margin-bottom: 2rem;
 }
 .socialMedia li:hover {
-  border-bottom: 2px solid palevioletred;
+  border-bottom: 2px solid #51a3a3;
 }
 body {
   font-family: "Libre Baskerville", serif;
-  color: #333333;
+  color: #605b56;
   background-color: #f5f5f5;
 }
 .hamb {
@@ -80,7 +86,7 @@ nav {
   justify-content: space-between;
 }
 .nav-items:hover {
-  color: palevioletred;
+  color: #51a3a3;
 }
 .content {
   width: 85%;
@@ -112,7 +118,7 @@ nav {
 .frontPage {
   margin-top: 8%;
   align-items: center;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #605b56;
   padding-bottom: 6%;
 }
 .aboutMe {
@@ -129,7 +135,7 @@ nav {
   justify-items: start;
   grid-gap: 35% 0;
   margin-top: 6%;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #605b56;
   padding-bottom: 9%;
 }
 .skills h3 {
@@ -172,20 +178,20 @@ section {
   margin-bottom: 2rem;
 }
 .projectLink {
-  color: palevioletred;
+  color: #51a3a3;
 }
 
 #contactForm {
   display: flex;
   flex-direction: column;
-  color: gray;
+  color: #605b56;
   line-height: 2rem;
   max-width: 50%;
 }
 input,
 textarea {
   margin: 1rem 0 1rem 3.5rem;
-  color: white;
+  color: #605b56;
   background-color: #ffe4e1;
   border: 0;
 }
@@ -193,34 +199,37 @@ textarea {
   margin-left: 2rem;
 }
 .btn {
-  border-bottom: 0.2rem solid palevioletred;
+  border-bottom: 0.2rem solid #51a3a3;
   padding-bottom: 0.3rem;
   border-top: 0;
   border-right: 0;
   border-left: 0;
-  color: gray;
+  color: #605b56;
   background-color: #ffe4e1;
   margin-left: auto;
   transition: background-color 1s linear;
+  transition: transform 0.3s;
 }
 #submitContactForm {
   margin-top: 2rem;
   font-size: 1.2rem;
-
   background-color: #ffe4e1;
 }
 .btn:hover {
-  background: palevioletred;
-  border-radius: 1rem;
-  color: white;
+  transform: scale(1.05);
 }
+.btn:active {
+  transform: scale(0.95);
+}
+
 .input-wrapper {
-  display: flex;
-  flex-direction: column;
+  clear: both;
+  text-align: right;
+  border-bottom: 0.1rem solid #605b56;
 }
-.label-wrapper {
-  display: flex;
-  align-items: flex-end;
+.input-wrapper label {
+  float: left;
+  padding-top: 2rem;
 }
 
 .contact-text {
@@ -228,11 +237,9 @@ textarea {
   text-align: center;
 }
 .contact-text p {
-  color: gray;
+  color: #605b56;
 }
-.input-wrapper {
-  border-bottom: 0.1rem solid gray;
-}
+
 .adminLogIn {
   display: flex;
   flex-direction: row;
@@ -246,15 +253,19 @@ textarea {
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 2rem;
   padding: 1rem 3rem;
   background-color: #ffe4e1;
+  color: #605b56;
 }
 #adminLogInForm .input-wrapper {
   border-bottom: 0;
 }
+#adminLogInForm .input-wrapper label {
+  padding-top: 0;
+}
 #adminLogInForm input {
   margin: 0 3rem 0 1rem;
+  color: #605b56;
 }
 #submitLogIn {
   padding: 0.3rem 0.5rem;
@@ -264,7 +275,7 @@ textarea {
   display: none;
   text-align: center;
 }
-#mailError {
+.error {
   margin-top: 1rem;
 }
 
@@ -335,7 +346,7 @@ textarea {
     font-size: 2rem;
   }
   .contact h2 {
-    font-size: 5rem;
+    font-size: 4rem;
   }
   #contactForm {
     min-width: 70%;
@@ -352,18 +363,27 @@ textarea {
   #adminLogInForm {
     font-size: 2rem;
     padding: 1rem;
+    display: grid;
+    justify-items: start;
+    grid-template-columns: 37% 37% auto;
+    grid-template-rows: auto;
   }
   #adminLogInForm .input-wrapper {
-    max-width: 40%;
+    max-width: 80%;
   }
 
   #adminLogInForm input {
     min-width: 0;
-    margin: 0 1rem;
+    margin: 0;
+    max-width: 100%;
+    margin-top: 1rem;
   }
   #submitLogIn {
     padding: 0;
-    margin: 0;
+    /* margin: 0;
+    grid-column-start: 1;
+    grid-column-end: 3; */
+    justify-self: start;
   }
   .label-wrapper input {
     width: 100%;
@@ -373,6 +393,14 @@ textarea {
   }
 }
 @media (max-width: 640px) {
+  .content {
+    width: 100%;
+  }
+  nav {
+    padding: 0;
+    width: auto;
+    background-color: #f5f5f5;
+  }
   .socialMedia {
     flex-direction: column;
     align-items: center;
@@ -391,7 +419,7 @@ textarea {
     width: 2rem;
     height: 5px;
     margin: 6px auto;
-    background-color: gray;
+    background-color: #605b56;
     transition: 0.2s;
   }
   .popup {
@@ -483,6 +511,7 @@ textarea {
   }
   #contactMe {
     font-size: 3rem;
+    line-height: 5rem;
   }
   .skills {
     grid-template-columns: repeat(1, 1fr);
@@ -530,27 +559,46 @@ textarea {
   input,
   textarea {
     margin: 1rem 0 1rem 2rem;
-    color: #000;
+    color: #605b56;
+    max-width: 70%;
   }
   #submitContactForm {
     font-size: 4rem;
     margin-top: 4rem;
+    line-height: 4rem;
   }
   #adminLogInForm {
     flex-direction: column;
     justify-content: center;
+    display: grid;
+    justify-items: start;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
+  #adminLogInForm .input-wrapper {
+    max-width: 90%;
+    margin-top: 2rem;
+  }
+
   #adminLogInForm input {
-    margin: 1rem 0 0 1rem;
+    width: 40%;
+    margin-top: 0;
   }
+  #adminLogInForm label {
+    font-size: 1.2rem;
+  }
+
   #submitLogIn {
     padding: 0 0 0.2rem 0;
-    margin: 1rem 0 0 0;
+    margin: 1rem auto 0;
+    font-size: 3rem;
   }
+  /*
   #adminLogInForm .input-wrapper:first-of-type {
     padding-left: 1.3rem;
-  }
-  #adminLogInForm.label-wrapper {
-    margin-bottom: 1rem;
+  }*/
+  #adminLogInForm label {
+    padding: 0 0 1rem 0;
+    float: none;
   }
 }
