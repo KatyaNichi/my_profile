@@ -5,12 +5,10 @@
   margin: 0;
   padding: 0;
 }
-
 ul,
 ol {
   list-style: none;
 }
-
 img {
   max-width: 100%;
   display: block;
@@ -29,7 +27,6 @@ a,
 li {
   border-bottom: 2px solid transparent;
 }
-
 #answer {
   padding: 1rem;
   font-size: 2rem;
@@ -49,7 +46,6 @@ h2 {
   padding-bottom: 0.5rem;
   font-weight: 600;
 }
-
 .socialMedia:nth-child(2) {
   margin-bottom: 2rem;
 }
@@ -64,7 +60,7 @@ body {
 .hamb {
   display: none;
 }
-nav {
+.nav-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -80,11 +76,7 @@ nav {
 .popup {
   display: none;
 }
-.nav-list {
-  width: 60%;
-  display: flex;
-  justify-content: space-between;
-}
+
 .nav-items:hover {
   color: #51a3a3;
 }
@@ -99,7 +91,6 @@ nav {
   flex-direction: row;
   justify-content: space-between;
 }
-
 .icons {
   width: 15%;
 }
@@ -131,9 +122,9 @@ nav {
 .skills {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, minmax(7rem, 1fr));
   justify-items: start;
-  grid-gap: 35% 0;
+  grid-gap: 10%;
   margin-top: 6%;
   border-bottom: 1px solid #605b56;
   padding-bottom: 9%;
@@ -147,9 +138,7 @@ nav {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
   grid-gap: 4rem 1rem;
-  /* align-items: center; */
 }
-/* .projects { */
 section {
   margin: 4rem 0;
 }
@@ -291,8 +280,9 @@ textarea {
     width: 95%;
   }
   .nav-list {
-    width: 100%;
+    width: 95%;
   }
+
   .icons {
     width: 45%;
   }
@@ -380,9 +370,7 @@ textarea {
   }
   #submitLogIn {
     padding: 0;
-    /* margin: 0;
-    grid-column-start: 1;
-    grid-column-end: 3; */
+
     justify-self: start;
   }
   .label-wrapper input {
@@ -409,6 +397,8 @@ textarea {
   .hamb {
     display: flex;
     align-items: center;
+    position: fixed;
+    top: 0;
   }
   .hamb__field {
     padding: 10px 20px;
@@ -493,7 +483,7 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
   }
   #profilePhoto {
     width: 50%;
@@ -593,10 +583,7 @@ textarea {
     margin: 1rem auto 0;
     font-size: 3rem;
   }
-  /*
-  #adminLogInForm .input-wrapper:first-of-type {
-    padding-left: 1.3rem;
-  }*/
+
   #adminLogInForm label {
     padding: 0 0 1rem 0;
     float: none;

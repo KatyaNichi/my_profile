@@ -1,6 +1,4 @@
-const proxyUrl = " https://cors-anywhere.herokuapp.com/";
-const targetUrl = "https://api.linkedin.com/v2/me";
-const finalUrl = proxyUrl + targetUrl;
+const body = document.body;
 const submitContactBtn = document.getElementById("submitContactForm");
 const errorName = document.getElementById("nameError");
 const errorEmail = document.getElementById("emailError");
@@ -17,31 +15,10 @@ const answer = document.getElementById("answer");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("textarea");
-const body = document.body;
+const skillsList = document.getElementById("listOfSkills");
+const menu = document.querySelector("#nav-list").cloneNode(1);
 
-function hideAnswer() {
-  answer.style.display = "none";
-}
-
-const fetchLinkedInData = async () => {
-  const response = await fetch(finalUrl, {
-    mode: "cors",
-    method: "GET",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      Authorization:
-        "Bearer AQVYoah3eyaHpwRv37vR79corBSu7KqqIalQTENjDHajddROFG5KjF7szV-0A_mr5RMpljkrC0zBxPK3k6UsYvI9CQLkPDjH5mS91ANwcUAFniqo1B3JHq-8C1UnkO0TCzLnPnU9gNrNqbnhzmxOkFeMR7mlwIYSClyMnA2lWgWK0TJcO0KH_V2Gmc9VK71t6Ck_DysA2S1xyaJQeuW7fpunP9FxLCD8KxTGhY4CD6G6ys8FuyCwuLqeOIUwogW76gUFADO2vq7SqsUfQ8Zk1-1gArTk-kwUWD62qfKA4ynHLvDbjOhFKFaHTrKzgw8Hv3v0PfXJSFJbHt5XR1-qgoDoMIAeTQ",
-    },
-  });
-  const data = await response.json();
-
-  const firstName = data.localizedFirstName;
-  const lastName = data.localizedLastName;
-  const headerName = document.getElementById("fetchedName");
-  headerName.textContent = `${firstName} ${lastName}. `;
-};
-fetchLinkedInData();
-
+//////////////////////////////////////////////// function to validate the contact form
 async function validateContactForm(event) {
   event.preventDefault();
   const name = document.contactform.name.value;
@@ -59,7 +36,6 @@ async function validateContactForm(event) {
 
     if (response.ok) {
       document.contactform.reset();
-      // show message
       answer.textContent = "Thank you for your message!";
       answer.style.display = "block";
     } else {
@@ -75,6 +51,7 @@ async function validateContactForm(event) {
   }
 }
 
+//////////////////////////////////////////////// function to validate log in
 function validateLogIn(event) {
   event.preventDefault();
   const mail = document.loginform.mail.value;
@@ -100,10 +77,7 @@ function validateLogIn(event) {
     });
 }
 
-/////////////////////////HAMBURGER MENU
-
-const menu = document.querySelector("#nav-list").cloneNode(1);
-
+/////////////////////////////////////////////HAMBURGER MENU
 function hambHandler(e) {
   e.preventDefault();
   popup.classList.toggle("open");
@@ -127,7 +101,7 @@ function closeOnClick() {
   body.classList.remove("noscroll");
 }
 
-//////////////////////////////////////////////////// Smooth scroll to target element and offset for fixed menu
+//////////////////////////////////////////////////// smooth scroll to target element
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -141,6 +115,37 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
+////////////////////////////////////////// function to fetch skill data
+async function fetchSkills() {
+  try {
+    const response = await fetch("/admin/skills");
+    const skills = await response.json();
+    return skills;
+  } catch (error) {
+    console.error("Failed to fetch skills:", error);
+    return [];
+  }
+}
+///////////////////////////////////////////////  function to display skills on the page
+function renderSkills(skills) {
+  skillsList.innerHTML = "";
+  skills.forEach((skill) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+        <h3>${skill.Name}</h3>
+        <p class="subHeader">${skill.Experience}</p>
+      `;
+    skillsList.appendChild(listItem);
+  });
+}
+function hideAnswer() {
+  answer.style.display = "none";
+}
+
+window.addEventListener("DOMContentLoaded", async () => {
+  const skills = await fetchSkills();
+  renderSkills(skills);
+});
 submitContactBtn.addEventListener("click", validateContactForm);
 loginForm.addEventListener("submit", validateLogIn);
 hamb.addEventListener("click", hambHandler);

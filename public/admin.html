@@ -3,24 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="admin.css" />
     <title>Admin Page</title>
   </head>
   <body>
+    <nav>
+      <div class="hamb">
+        <div class="hamb__field" id="hamb">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+      <ul class="nav-list" id="nav-list">
+        <li><a href="#messages">Messages</a></li>
+        <li><a href="#converter">Converter</a></li>
+        <li><a href="#addNewSkill">Add skill</a></li>
+        <li><a href="#skillsUpdate">Update skills</a></li>
+        <li><a href="#jokes">Jokes</a></li>
+        <li><a href="#jokes">Log out</a></li>
+      </ul>
+      <div class="popup" id="popup"></div>
+    </nav>
     <h1>Admin Page</h1>
-    <h2>Received messages</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Index</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Message</th>
-          <th>Delete message</th>
-        </tr>
-      </thead>
-      <tbody id="messagesTableBody"></tbody>
-    </table>
-    <div id="statusMessage"></div>
+    <section id="messages">
+      <h2>Received messages</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Delete message</th>
+          </tr>
+        </thead>
+        <tbody id="messagesTableBody"></tbody>
+      </table>
+      <div id="statusMessage"></div>
+    </section>
+    <section id="converter">
+      <h2>Currency Converter</h2>
+      <div class="converter-wrap">
+        <input type="number" id="amount" placeholder="Enter amount" />
+        <select id="currency">
+          <option value="USD">USD (US Dollar)</option>
+          <option value="EUR">EUR (Euro)</option>
+          <option value="DKK">DKK (Danish Krone)</option>
+          <option value="NOK">NOK (Norwegian Krone)</option>
+        </select>
+        <button onclick="convertCurrency()">Convert</button>
+      </div>
+      <p id="result"></p>
+    </section>
+    <section id="addNewSkill">
+      <h2>Add new skill</h2>
+      <form id="addSkillForm">
+        <div id="skillName">
+          <label for="skillName">Skill Name:</label>
+          <input type="text" id="skillName" required />
+        </div>
+        <div>
+          <label for="experience">Experience:</label>
+          <input type="text" id="experience" required />
+        </div>
+        <button type="submit">Add Skill</button>
+      </form>
+    </section>
+    <section id="skillsUpdate">
+      <h2>Update skills</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Experience</th>
+            <th>Update Experience</th>
+          </tr>
+        </thead>
+        <tbody id="skillsTableBody"></tbody>
+      </table>
+      <p id="successMessage" class="success-message"></p>
+      <p id="errorMessage" class="error-message"></p>
+    </section>
+    <section id="jokes">
+      <h2>Programming Jokes</h2>
+      <ul id="jokesList"></ul>
+      <button id="fetchJokeBtn">Get a joke</button>
+    </section>
+    <button id="logoutButton">Log out</button>
 
     <script src="/admin.js"></script>
   </body>

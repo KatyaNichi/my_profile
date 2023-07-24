@@ -6,19 +6,11 @@ const mysql = require("mysql2");
 const connection = require("./db.js");
 const Joi = require("joi");
 
-// connection.query("SELECT * FROM Project", (error, results) => {
-//   if (error) {
-//     console.error(error);
-//   } else {
-//     console.log(results);
-//   }
-// });
-
 app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-////////////////////////////////////////////////CONTACT FORM VALIDATION
+////////////////////////////////////////////////contact form validation
 const contactSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string()
@@ -27,19 +19,14 @@ const contactSchema = Joi.object({
   message: Joi.string().required(),
 });
 
-// POST-request handler
 app.post("/contact", (req, res) => {
   const { name, email, message } = req.body;
-
-  // validation with joi
   const { error } = contactSchema.validate({ name, email, message });
   if (error) {
     console.error("Validation error:", error);
     res.status(400).json({ error: error.details[0].message });
     return;
   }
-
-  // Saving data in database
   const query = "INSERT INTO contact (Name, Email, Message) VALUES (?, ?, ?)";
   connection.query(query, [name, email, message], (error, results) => {
     if (error) {
@@ -47,7 +34,6 @@ app.post("/contact", (req, res) => {
       res.status(500).json({ error: "Internal server error" });
       return;
     }
-
     console.log("Data saved successfully");
     res.status(200).json({ message: "Data saved successfully" });
   });
@@ -56,11 +42,50 @@ app.post("/contact", (req, res) => {
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
+app.get("/admin/skills", (req, res) => {
+  const query = "SELECT * FROM Skill";
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error("Failed to fetch skills:", error);
+      res.status(500).json({ error: "Internal server error" });
+      return;
+    }
+    res.json(results);
+  });
+});
+
+//////////////////////////////////////////////////adding new skill
+app.put("/admin/skills/:id", (req, res) => {
+  const skillId = req.params.id;
+  const { experience } = req.body;
+
+  const query = "UPDATE Skill SET Experience = ? WHERE id = ?";
+  connection.query(query, [experience, skillId], (error, results) => {
+    if (error) {
+      console.error("Failed to update experience:", error);
+      res.status(500).json({ error: "Internal server error" });
+      return;
+    }
+    res.status(200).json({ message: "Experience updated successfully" });
+  });
+});
+
+app.post("/admin/skills", (req, res) => {
+  const { name, experience } = req.body;
+
+  const query = "INSERT INTO Skill (Name, Experience) VALUES (?, ?)";
+  connection.query(query, [name, experience], (error, results) => {
+    if (error) {
+      console.error("Failed to add skill:", error);
+      res.status(500).json({ error: "Internal server error" });
+      return;
+    }
+    res.status(200).json({ message: "Skill added successfully" });
+  });
+});
 
 app.delete("/admin/messages/:id", (req, res) => {
   const messageId = req.params.id;
-
-  // Perform the deletion operation in the database
   const query = "DELETE FROM contact WHERE id = ?";
   connection.query(query, [messageId], (error, results) => {
     if (error) {
@@ -68,7 +93,6 @@ app.delete("/admin/messages/:id", (req, res) => {
       res.status(500).json({ error: "Internal server error" });
       return;
     }
-
     console.log("Message deleted successfully");
     res.status(200).json({ message: "Message deleted successfully" });
   });
@@ -76,7 +100,6 @@ app.delete("/admin/messages/:id", (req, res) => {
 
 app.post("/login", (req, res) => {
   const { mail, password } = req.body;
-
   const query = "SELECT * FROM User WHERE email = ? AND password = ?";
   connection.query(query, [mail, password], (error, results) => {
     if (error) {
@@ -93,8 +116,8 @@ app.post("/login", (req, res) => {
 app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/admin.html"));
 });
+
 app.get("/admin/messages", (req, res) => {
-  // Request to get messages from database
   const query = "SELECT * FROM contact";
   connection.query(query, (error, results) => {
     if (error) {
@@ -102,9 +125,12 @@ app.get("/admin/messages", (req, res) => {
       res.status(500).json({ error: "Internal server error" });
       return;
     }
-    // send list of messages in JSON
     res.json(results);
   });
+});
+
+app.post("/logout", (req, res) => {
+  res.redirect("/");
 });
 
 app.listen(3000, () => {
