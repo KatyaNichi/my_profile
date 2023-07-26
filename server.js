@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const connection = require("./db.js");
 const Joi = require("joi");
+const PORT = process.env.PORT || 3000; // Используйте предоставленный динамический порт или используйте порт 3000 по умолчанию
+
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -133,6 +135,6 @@ app.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(PORT, () => {
+  console.log("Server is running on port ${PORT}");
 });
