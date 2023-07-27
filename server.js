@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const connection = require("./db.js");
 const Joi = require("joi");
-const PORT = process.env.PORT; 
+const PORT = process.env.PORT || 3000; 
 console.log(process.env.PORT);
 
 
