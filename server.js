@@ -193,25 +193,14 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 //const connection = require("./db.js");
+const pool = require("./db.js");
 const Joi = require("joi");
 const http = require('http');
 
 app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-const connection = mysql.createConnection({
-  host: "us-cdbr-east-06.cleardb.net",
-  user: "b1f5a013e2634d",
-  password: "eabfe148",
-  database: "heroku_bb16e057f7f46dd",
-});
-connection.query('SELECT 1 + 1 AS result', (error, results, fields) => {
-  if (error) {
-    console.error( error);
-  } else {
-    console.log(results[0].result);
-  }
-});
+
 ////////////////////////////////////////////////contact form validation
 const contactSchema = Joi.object({
   name: Joi.string().required(),
@@ -230,7 +219,8 @@ app.post("/contact", (req, res) => {
     return;
   }
   const query = "INSERT INTO contact (Name, Email, Message) VALUES (?, ?, ?)";
-  connection.query(query, [name, email, message], (error, results) => {
+  // connection.query(query, [name, email, message], (error, results) => {
+    pool.query(query, [name, email, message], (error, results) => {
     if (error) {
       console.error("Failed to save data:", error);
       res.status(500).json({ error: "Internal server error" });
@@ -246,7 +236,8 @@ app.get("/", (req, res) => {
 });
 app.get("/admin/skills", (req, res) => {
   const query = "SELECT * FROM Skill";
-  connection.query(query, (error, results) => {
+  //connection.query(query, (error, results) => {
+    pool.query(query, (error, results) => {
     if (error) {
       console.error("Failed to fetch skills:", error);
       res.status(500).json({ error: "Internal server error" });
@@ -262,7 +253,7 @@ app.put("/admin/skills/:id", (req, res) => {
   const { experience } = req.body;
 
   const query = "UPDATE Skill SET Experience = ? WHERE id = ?";
-  connection.query(query, [experience, skillId], (error, results) => {
+  pool.query(query, [experience, skillId], (error, results) => {
     if (error) {
       console.error("Failed to update experience:", error);
       res.status(500).json({ error: "Internal server error" });
@@ -276,7 +267,7 @@ app.post("/admin/skills", (req, res) => {
   const { name, experience } = req.body;
 
   const query = "INSERT INTO Skill (Name, Experience) VALUES (?, ?)";
-  connection.query(query, [name, experience], (error, results) => {
+  pool.query(query, [name, experience], (error, results) => {
     if (error) {
       console.error("Failed to add skill:", error);
       res.status(500).json({ error: "Internal server error" });
@@ -289,7 +280,7 @@ app.post("/admin/skills", (req, res) => {
 app.delete("/admin/messages/:id", (req, res) => {
   const messageId = req.params.id;
   const query = "DELETE FROM contact WHERE id = ?";
-  connection.query(query, [messageId], (error, results) => {
+  pool.query(query, [messageId], (error, results) => {
     if (error) {
       console.error("Failed to delete message:", error);
       res.status(500).json({ error: "Internal server error" });
@@ -303,7 +294,7 @@ app.delete("/admin/messages/:id", (req, res) => {
 app.post("/login", (req, res) => {
   const { mail, password } = req.body;
   const query = "SELECT * FROM User WHERE email = ? AND password = ?";
-  connection.query(query, [mail, password], (error, results) => {
+  pool.query(query, [mail, password], (error, results) => {
     if (error) {
       console.error("Database error:", error);
       res.status(500).json({ error: "Internal server error" });
@@ -321,7 +312,7 @@ app.get("/admin", (req, res) => {
 
 app.get("/admin/messages", (req, res) => {
   const query = "SELECT * FROM contact";
-  connection.query(query, (error, results) => {
+  pool.query(query, (error, results) => {
     if (error) {
       console.error("Failed to fetch messages from the database:", error);
       res.status(500).json({ error: "Internal server error" });
