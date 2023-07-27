@@ -5,8 +5,9 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const connection = require("./db.js");
 const Joi = require("joi");
-// const PORT = process.env.PORT || 80; 
-const PORT = 443;
+const PORT = process.env.PORT || 80; 
+console.log(process.env.PORT);
+
 
 
 app.use(express.static("public"));
