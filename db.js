@@ -14,9 +14,9 @@ const connection = mysql.createConnection({
 });
 connection.query('SELECT 1 + 1 AS result', (error, results, fields) => {
   if (error) {
-    console.error('Ошибка выполнения запроса:', error);
+    console.error( error);
   } else {
-    console.log('Результат:', results[0].result);
+    console.log(results[0].result);
   }
 });
 module.exports = connection;
