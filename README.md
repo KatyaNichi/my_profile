@@ -17,7 +17,6 @@ To run this project, you need to have the following software installed on your s
 
 - Node.js
 - npm
-- MySQL database server
 
 ## Installation
 
@@ -26,17 +25,8 @@ To run this project, you need to have the following software installed on your s
 
 2. Install the dependencies:
    `npm install`
-3. Set up the MySQL database:
-
-- Create a new database with the name "my_profile".
-- Import the database schema from the "database" folder in the root directory.
-
-4. Configure the database connection:
-
-- Open the "db.js" file in the root directory.
-- Update the connection details (host, user, password, etc.) according to your MySQL setup.
-
-5. Start the server:
+   
+3.  Start the server:
 
 `npm start`
 The website should now be running at http://localhost:3000.
