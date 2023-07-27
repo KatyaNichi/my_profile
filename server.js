@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql2");
 const connection = require("./db.js");
 const Joi = require("joi");
-const PORT = process.env.PORT || 3000; // Используйте предоставленный динамический порт или используйте порт 3000 по умолчанию
+const PORT = process.env.PORT || 80; 
 
 
 app.use(express.static("public"));
