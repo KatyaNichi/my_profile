@@ -96,6 +96,12 @@ h2 {
 #jokes button {
   margin: 1rem;
 }
+#logoutButton{
+  margin-bottom: 2rem;
+}
+#result {
+  margin-top: 1rem;
+}
 @media (max-width: 1023px) {
   .nav-list {
     font-size: 1.5rem;
