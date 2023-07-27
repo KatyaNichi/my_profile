@@ -27,8 +27,8 @@ CREATE TABLE `contact` (
   `Name` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Message` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id`)DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

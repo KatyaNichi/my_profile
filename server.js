@@ -9,6 +9,53 @@ const PORT = process.env.PORT || 80;
 console.log(process.env.PORT);
 
 
+// Event listener for HTTP server 'error' event.
+const onError = (error) => {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  // Handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(new Error('Requires elevated privileges'));
+      process.exit(1);
+      break;
+
+    case 'EADDRINUSE':
+      const bind = 'PortNumber'; // Replace 'PortNumber' with the port number you are using
+      console.error(new Error(`${bind} is already in use`));
+      process.exit(1);
+      break;
+
+    default:
+      throw error;
+  }
+};
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server');
+
+  server.close(() => {
+    console.log('HTTP server closed');
+  });
+});
+
+process.on('unhandledRejection', (reason) => {
+  throw reason;
+});
+
+process.on('uncaughtException', (error) => {
+  console.error(error);
+  
+  // SetImmediate is generally not recommended in this scenario.
+  // It's better to let the process exit naturally, so I am removing it.
+  process.exit(1);
+});
+
+server.on('error', onError);
+
 
 app.use(express.static("public"));
 app.use(express.json());
