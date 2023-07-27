@@ -192,14 +192,26 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
-const connection = require("./db.js");
+//const connection = require("./db.js");
 const Joi = require("joi");
 const http = require('http');
 
 app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+const connection = mysql.createConnection({
+  host: "us-cdbr-east-06.cleardb.net",
+  user: "b1f5a013e2634d",
+  password: "eabfe148",
+  database: "heroku_bb16e057f7f46dd",
+});
+connection.query('SELECT 1 + 1 AS result', (error, results, fields) => {
+  if (error) {
+    console.error( error);
+  } else {
+    console.log(results[0].result);
+  }
+});
 ////////////////////////////////////////////////contact form validation
 const contactSchema = Joi.object({
   name: Joi.string().required(),

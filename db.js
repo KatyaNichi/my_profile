@@ -19,4 +19,4 @@ connection.query('SELECT 1 + 1 AS result', (error, results, fields) => {
     console.log(results[0].result);
   }
 });
-module.exports = connection;
+//module.exports = connection;
