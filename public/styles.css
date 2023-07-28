@@ -350,6 +350,7 @@ textarea {
   }
   #contactForm {
     min-width: 70%;
+    height: 36rem;
   }
 #contactForm input {
     height: 46%;
