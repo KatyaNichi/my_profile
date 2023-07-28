@@ -508,14 +508,14 @@ textarea {
   }
   .description h1,
   #myName {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .aboutMe {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
   #contactMe {
-    font-size: 3rem;
-    line-height: 5rem;
+    font-size: 2rem;
+    line-height: 4rem;
   }
   .skills {
     grid-template-columns: repeat(1, 1fr);
@@ -539,10 +539,10 @@ textarea {
     text-align: center;
   }
   .projects h2 {
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .projectLink {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .listOfProjects {
     grid-template-columns: repeat(1, 1fr);
@@ -570,7 +570,7 @@ textarea {
     max-width: 70%;
   }
   #submitContactForm {
-    font-size: 4rem;
+    font-size: 2rem;
     margin-top: 4rem;
     line-height: 4rem;
   }
