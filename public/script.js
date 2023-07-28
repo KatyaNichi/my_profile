@@ -16,7 +16,8 @@ const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("textarea");
 const skillsList = document.getElementById("listOfSkills");
-const menu = document.querySelector("#nav-list").cloneNode(1);
+//const menu = document.querySelector("#nav-list").cloneNode(1);
+const menu = document.querySelector("#nav-list").cloneNode(true);
 
 //////////////////////////////////////////////// function to validate the contact form
 async function validateContactForm(event) {
@@ -83,7 +84,11 @@ function hambHandler(e) {
   popup.classList.toggle("open");
   hamb.classList.toggle("active");
   body.classList.toggle("noscroll");
-  renderPopup();
+  if (popup.classList.contains("open")) {
+    popup.appendChild(menu);
+  } else {
+    popup.removeChild(menu);
+  }
 }
 
 function renderPopup() {
