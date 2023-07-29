@@ -154,6 +154,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 submitContactBtn.addEventListener("click", validateContactForm);
 loginForm.addEventListener("submit", validateLogIn);
 hamb.addEventListener("click", hambHandler);
+hamb.addEventListener("touchstart", hambHandler);
 nameInput.addEventListener("input", hideAnswer);
 emailInput.addEventListener("input", hideAnswer);
 messageInput.addEventListener("input", hideAnswer);
