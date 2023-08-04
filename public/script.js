@@ -17,7 +17,7 @@ const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("textarea");
 const skillsList = document.getElementById("listOfSkills");
 //const menu = document.querySelector("#nav-list").cloneNode(1);
-const menu = document.querySelector("#nav-list").cloneNode(true);
+//const menu = document.querySelector("#nav-list").cloneNode(true);
 
 //////////////////////////////////////////////// function to validate the contact form
 async function validateContactForm(event) {
@@ -79,30 +79,73 @@ function validateLogIn(event) {
 }
 
 /////////////////////////////////////////////HAMBURGER MENU
+// function hambHandler(e) {
+//   e.preventDefault();
+//   popup.classList.toggle("open");
+//   hamb.classList.toggle("active");
+//   body.classList.toggle("noscroll");
+//   if (popup.classList.contains("open")) {
+//     menu.style.display = "flex"; 
+//     popup.appendChild(menu);
+//   } else {
+//     popup.removeChild(menu);
+//   }
+// }
 function hambHandler(e) {
   e.preventDefault();
   popup.classList.toggle("open");
   hamb.classList.toggle("active");
   body.classList.toggle("noscroll");
+
+  // Move the querySelector inside the hambHandler to get the latest version of #nav-list
+  const menu = document.querySelector("#nav-list");
+
   if (popup.classList.contains("open")) {
-    menu.style.display = "flex"; 
+    menu.style.display = "flex";
     popup.appendChild(menu);
+
+    // Add event listeners to the links when the menu is displayed
+    const links = Array.from(menu.children);
+    links.forEach((link) => {
+      link.addEventListener("click", closeOnClick);
+    });
   } else {
-    popup.removeChild(menu);
+    // Clone the #nav-list element before removing it
+    const clonedMenu = menu.cloneNode(true);
+    clonedMenu.style.display = "none"; // Hide the cloned menu
+    popup.appendChild(clonedMenu);
+
+    // Remove event listeners from the cloned links
+    const clonedLinks = Array.from(clonedMenu.children);
+    clonedLinks.forEach((link) => {
+      link.removeEventListener("click", closeOnClick);
+    });
   }
 }
 
 function renderPopup() {
-  
-  menu.style.display = "flex"; 
+  const menu = document.querySelector("#nav-list").cloneNode(true);
+  menu.style.display = "flex"; // Display the cloned menu
   popup.appendChild(menu);
-  
+
+  // Add event listeners to the links when the menu is displayed
+  const links = Array.from(menu.children);
+  links.forEach((link) => {
+    link.addEventListener("click", closeOnClick);
+  });
 }
 
-const links = Array.from(menu.children);
-links.forEach((link) => {
-  link.addEventListener("click", closeOnClick);
-});
+// function renderPopup() {
+  
+//   menu.style.display = "flex"; 
+//   popup.appendChild(menu);
+  
+// }
+
+// const links = Array.from(menu.children);
+// links.forEach((link) => {
+//   link.addEventListener("click", closeOnClick);
+// });
 
 function closeOnClick() {
   popup.classList.remove("open");
