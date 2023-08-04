@@ -450,6 +450,7 @@ textarea {
     justify-content: start;
     padding: 3rem 0;
     overflow: auto;
+    z-index: 200;
   }
   .popup .nav-list > li {
     width: 100%;
