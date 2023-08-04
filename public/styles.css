@@ -451,6 +451,7 @@ textarea {
     padding: 3rem 0;
     overflow: auto;
     z-index: 200;
+    position: fixed;
   }
   .popup .nav-list > li {
     width: 100%;
