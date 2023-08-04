@@ -452,11 +452,11 @@ textarea {
     overflow: auto;
    
   }
-  .popup .nav-list > li {
+  .popup .nav-list li {
     width: 100%;
   }
 
-  .popup .nav-list > li > a {
+  .popup .nav-list li a {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -466,7 +466,7 @@ textarea {
     color: #3f3f3f;
   }
 
-  .popup .menu > li > a:hover {
+  .popup .nav-list li a:hover {
     background-color: rgba(122, 82, 179, 0.1);
   }
 
