@@ -85,6 +85,7 @@ function hambHandler(e) {
   hamb.classList.toggle("active");
   body.classList.toggle("noscroll");
   if (popup.classList.contains("open")) {
+    menu.style.display = "flex"; 
     popup.appendChild(menu);
   } else {
     popup.removeChild(menu);
@@ -92,6 +93,7 @@ function hambHandler(e) {
 }
 
 function renderPopup() {
+  
   menu.style.display = "flex"; 
   popup.appendChild(menu);
   
