@@ -96,8 +96,7 @@ function hambHandler(e) {
   popup.classList.toggle("open");
   hamb.classList.toggle("active");
   body.classList.toggle("noscroll");
-
-  // Move the querySelector inside the hambHandler to get the latest version of #nav-list
+  
   const menu = document.querySelector("#nav-list");
 
   if (popup.classList.contains("open")) {
@@ -110,19 +109,18 @@ function hambHandler(e) {
       link.addEventListener("click", closeOnClick);
     });
   } else {
-    // Clone the #nav-list element before removing it
-    const clonedMenu = menu.cloneNode(true);
-    clonedMenu.style.display = "none"; // Hide the cloned menu
-    popup.appendChild(clonedMenu);
+    // Move the #nav-list element back to its original location
+    const originalLocation = document.querySelector("nav");
+    originalLocation.appendChild(menu);
 
-    // Remove event listeners from the cloned links
-    const clonedLinks = Array.from(clonedMenu.children);
-    clonedLinks.forEach((link) => {
+    // Remove event listeners from the links
+    const links = Array.from(menu.children);
+    links.forEach((link) => {
       link.removeEventListener("click", closeOnClick);
     });
   }
 }
-
+renderPopup();
 function renderPopup() {
   const menu = document.querySelector("#nav-list").cloneNode(true);
   menu.style.display = "flex"; // Display the cloned menu
