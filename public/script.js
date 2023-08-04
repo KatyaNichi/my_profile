@@ -17,7 +17,7 @@ const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("textarea");
 const skillsList = document.getElementById("listOfSkills");
 //const menu = document.querySelector("#nav-list").cloneNode(1);
-//const menu = document.querySelector("#nav-list").cloneNode(true);
+const mobileMenu = document.querySelector("#mobile-menu");
 
 //////////////////////////////////////////////// function to validate the contact form
 async function validateContactForm(event) {
@@ -79,71 +79,27 @@ function validateLogIn(event) {
 }
 
 /////////////////////////////////////////////HAMBURGER MENU
-// function hambHandler(e) {
-//   e.preventDefault();
-//   popup.classList.toggle("open");
-//   hamb.classList.toggle("active");
-//   body.classList.toggle("noscroll");
-//   if (popup.classList.contains("open")) {
-//     menu.style.display = "flex"; 
-//     popup.appendChild(menu);
-//   } else {
-//     popup.removeChild(menu);
-//   }
-// }
 function hambHandler(e) {
   e.preventDefault();
   popup.classList.toggle("open");
   hamb.classList.toggle("active");
   body.classList.toggle("noscroll");
-  
-  const menu = document.querySelector("#nav-list");
-
   if (popup.classList.contains("open")) {
-    menu.style.display = "flex";
-    popup.appendChild(menu);
-
-    // Add event listeners to the links when the menu is displayed
-    const links = Array.from(menu.children);
-    links.forEach((link) => {
-      link.addEventListener("click", closeOnClick);
-    });
+    popup.appendChild(mobileMenu);
   } else {
-    // Move the #nav-list element back to its original location
-    const originalLocation = document.querySelector("nav");
-    originalLocation.appendChild(menu);
-
-    // Remove event listeners from the links
-    const links = Array.from(menu.children);
-    links.forEach((link) => {
-      link.removeEventListener("click", closeOnClick);
-    });
+    popup.removeChild(mobileMenu);
   }
 }
-renderPopup();
-function renderPopup() {
-  const menu = document.querySelector("#nav-list").cloneNode(true);
-  menu.style.display = "flex"; // Display the cloned menu
-  popup.appendChild(menu);
 
-  // Add event listeners to the links when the menu is displayed
-  const links = Array.from(menu.children);
-  links.forEach((link) => {
-    link.addEventListener("click", closeOnClick);
-  });
+function renderPopup() {
+  popup.appendChild(mobileMenu);
+  
 }
 
-// function renderPopup() {
-  
-//   menu.style.display = "flex"; 
-//   popup.appendChild(menu);
-  
-// }
-
-// const links = Array.from(menu.children);
-// links.forEach((link) => {
-//   link.addEventListener("click", closeOnClick);
-// });
+const links = Array.from(mobileMenu.children);
+links.forEach((link) => {
+  link.addEventListener("click", closeOnClick);
+});
 
 function closeOnClick() {
   popup.classList.remove("open");

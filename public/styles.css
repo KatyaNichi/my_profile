@@ -441,7 +441,7 @@ textarea {
   .popup.open {
     left: 0;
   }
-  .popup .nav-list {
+  .popup .mobile-menu {
     width: 100%;
     height: 100%;
     display: flex;
@@ -452,11 +452,11 @@ textarea {
     overflow: auto;
    
   }
-  .popup .nav-list li {
+  .popup .mobile-menu li {
     width: 100%;
   }
 
-  .popup .nav-list li a {
+  .popup .mobile-menu li a {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -466,7 +466,7 @@ textarea {
     color: #3f3f3f;
   }
 
-  .popup .nav-list li a:hover {
+  .mobile-menu-items:hover {
     background-color: rgba(122, 82, 179, 0.1);
   }
 
