@@ -1,6 +1,6 @@
 const popup = document.querySelector("#popup");
 const body = document.body;
-const menu = document.querySelector("#nav-list").cloneNode(1);
+const menu = document.querySelector("#mobile-menu");
 const logoutButton = document.getElementById("logoutButton");
 const fetchJokeBtn = document.getElementById("fetchJokeBtn");
 
