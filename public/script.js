@@ -92,7 +92,9 @@ function hambHandler(e) {
 }
 
 function renderPopup() {
+  menu.style.display = "flex"; 
   popup.appendChild(menu);
+  
 }
 
 const links = Array.from(menu.children);
