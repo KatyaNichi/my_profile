@@ -17,7 +17,8 @@ const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("textarea");
 const skillsList = document.getElementById("listOfSkills");
 //const menu = document.querySelector("#nav-list").cloneNode(1);
-const menu = document.querySelector("#nav-list").cloneNode(true);
+const menu = document.querySelector("#nav-list");
+//.cloneNode(true);
 
 //////////////////////////////////////////////// function to validate the contact form
 async function validateContactForm(event) {
